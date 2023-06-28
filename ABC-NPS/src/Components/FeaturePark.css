@@ -1,0 +1,9 @@
+.feature-container {
+  display: flex;
+  border-style: solid;
+}
+
+.feature-park {
+  display: flex;
+  flex-direction: column;
+}
