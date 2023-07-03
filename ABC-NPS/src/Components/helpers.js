@@ -58,3 +58,25 @@ const getStateFullNames = (stateAbbreviations) => {
 };
 
 export default getStateFullNames;
+
+import { useState } from "react";
+
+export const useParkClickHandler = () => {
+  const [selectedParkId, setSelectedParkId] = useState(null);
+  const handleParkClick = (parkId) => {
+    setSelectedParkId(parkId);
+  };
+  return { selectedParkId, handleParkClick };
+};
+
+export const removeFromWishlist = (parkId, wishlist, setWishlist) => {
+  // Remove the park with the specified ID from the wishlist
+  const updatedWishlist = wishlist.filter((park) => park.id !== parkId);
+  setWishlist(updatedWishlist);
+};
+
+export const addToWishlist = (park, wishlist, setWishlist) => {
+  // Add the park to the wishlist
+  const updatedWishlist = [...wishlist, park];
+  setWishlist(updatedWishlist);
+};

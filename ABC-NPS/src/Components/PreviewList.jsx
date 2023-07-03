@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { PreviewPark } from "./PreviewPark";
-import { FeaturePark } from "./FeaturePark";
 import "./Preview.css";
+import { apiURL, apiKey, limit } from "./apiConfig";
 
-export const PreviewList = ({ setSelectedParkId, selectedParkId }) => {
+export const PreviewList = ({ setSelectedParkId, matchingResults }) => {
   const [parks, setParks] = useState([]);
+  const [filteredParks, setFilteredParks] = useState([]);
 
   const handleClick = (park) => {
     setSelectedParkId(park.id);
   };
 
   useEffect(() => {
+    // Fetch parks data
     async function fetchParks() {
       try {
         const response = await fetch(
-          "https://developer.nps.gov/api/v1/parks?limit=500&api_key=5IXSbwf3duWB9eBrOQR4rgzXTht6EcT1VfapdmFr"
+          `${apiURL}?limit=${limit}&api_key=${apiKey}`
         );
         const result = await response.json();
         const parkData = result.data;
@@ -27,29 +29,28 @@ export const PreviewList = ({ setSelectedParkId, selectedParkId }) => {
     }
     fetchParks();
   }, []);
+
+  useEffect(() => {
+    // Filter the parks data based on the matchingResults
+    const filteredParks = parks.filter((park) =>
+      matchingResults.includes(park.id)
+    );
+    setFilteredParks(filteredParks);
+  }, [matchingResults, parks]);
+
+  const displayParks = matchingResults.length > 0 ? filteredParks : parks;
+
   return (
     <div className="preview-container">
       <h2 className="preview-hd">National Parks & Recreation</h2>
       <div className="list-hd">Name and Location</div>
       <div className="park-list">
-        {parks.map((park) => (
+        {displayParks.map((park) => (
           <PreviewPark key={park.id} park={park} handleClick={handleClick} />
         ))}
       </div>
-      {selectedParkId && (
-        <div className="feature-park">
-          <FeaturePark selectedParkId={selectedParkId} />
-        </div>
-      )}
     </div>
   );
 };
-export default PreviewList;
 
-/* <>this says if select contact is truth, provide that contactn, if falsy, provide the contact list
-  {selectedContactId ? (
-    <SelectedContact selectedContactId={selectedContactId} />
-  ) : (
-    <ContactList setSelectedContactId={setSelectedContactId} />
-  )}
-</>; */
+export default PreviewList;

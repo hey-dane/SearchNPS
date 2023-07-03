@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import getStateFullNames from "./helpers";
+import { apiURL, apiKey, limit } from "./apiConfig.js";
+
 import "./FeaturePark.css";
 
-export const FeaturePark = ({ selectedParkId }) => {
+export default function FeaturePark({
+  selectedParkId,
+  wishlist,
+  addToWishlist,
+}) {
   const [park, setPark] = useState(null);
 
   useEffect(() => {
     async function fetchPark() {
       try {
         const response = await fetch(
-          "https://developer.nps.gov/api/v1/parks?limit=500&api_key=5IXSbwf3duWB9eBrOQR4rgzXTht6EcT1VfapdmFr"
+          `${apiURL}?limit=${limit}&api_key=${apiKey}`
         );
         const result = await response.json();
         const parks = result.data;
@@ -25,6 +31,13 @@ export const FeaturePark = ({ selectedParkId }) => {
 
   const stateList = park ? getStateFullNames(park.states) : [];
 
+  // const handleAddToWishlist = () => {
+  //   if (park) {
+  //     addToWishlist([...wishlist, park]);
+  //     console.log(`Added to wishlist: ${park.fullName}`);
+  //   }
+  // };
+
   return (
     <div className="feature-container">
       {park ? (
@@ -34,6 +47,7 @@ export const FeaturePark = ({ selectedParkId }) => {
             <h3>{park.designation}</h3>
             <p>Located in {stateList.join(", ")}</p>
             <p>{park.description}</p>
+            {/* <AddToWishlistButton onClick={handleAddToWishlist} /> */}
           </div>
         </>
       ) : (
@@ -41,6 +55,4 @@ export const FeaturePark = ({ selectedParkId }) => {
       )}
     </div>
   );
-};
-
-export default FeaturePark;
+}
