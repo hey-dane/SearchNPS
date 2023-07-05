@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { PreviewPark } from "./PreviewPark";
-import "./Preview.css";
+import FeaturePark from "./FeaturePark";
 import { apiURL, apiKey, limit } from "./apiConfig";
 
-export const PreviewList = ({ setSelectedParkId, matchingResults }) => {
+export const PreviewList = ({ updateSelectedParkId, searchResults }) => {
   const [parks, setParks] = useState([]);
   const [filteredParks, setFilteredParks] = useState([]);
-
-  const handleClick = (park) => {
-    setSelectedParkId(park.id);
-  };
 
   useEffect(() => {
     // Fetch parks data
@@ -22,7 +18,6 @@ export const PreviewList = ({ setSelectedParkId, matchingResults }) => {
         const parkData = result.data;
         const shuffledParks = parkData.sort(() => Math.random() - 0.5);
         setParks(shuffledParks);
-        console.log(shuffledParks);
       } catch (error) {
         console.error(error);
       }
@@ -31,23 +26,34 @@ export const PreviewList = ({ setSelectedParkId, matchingResults }) => {
   }, []);
 
   useEffect(() => {
-    // Filter the parks data based on the matchingResults
-    const filteredParks = parks.filter((park) =>
-      matchingResults.includes(park.id)
-    );
-    setFilteredParks(filteredParks);
-  }, [matchingResults, parks]);
+    // Filter parks based on search results
+    if (searchResults && searchResults.length > 0) {
+      setFilteredParks(searchResults);
+    } else {
+      setFilteredParks(parks);
+    }
+  }, [searchResults, parks]);
 
-  const displayParks = matchingResults.length > 0 ? filteredParks : parks;
+  const handleParkClick = (park) => {
+    updateSelectedParkId(park.id);
+  };
 
   return (
     <div className="preview-container">
       <h2 className="preview-hd">National Parks & Recreation</h2>
       <div className="list-hd">Name and Location</div>
       <div className="park-list">
-        {displayParks.map((park) => (
-          <PreviewPark key={park.id} park={park} handleClick={handleClick} />
-        ))}
+        {filteredParks.length > 0 ? (
+          filteredParks.map((park) => (
+            <PreviewPark
+              key={park.id}
+              park={park}
+              handleClick={handleParkClick}
+            />
+          ))
+        ) : (
+          <div>No parks found.</div>
+        )}
       </div>
     </div>
   );

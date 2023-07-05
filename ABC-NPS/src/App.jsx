@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// App.jsx
+import React, { useState, useEffect } from "react";
 import PreviewList from "./Components/PreviewList";
 import FeaturePark from "./Components/FeaturePark";
 import Header from "./Components/Header";
@@ -7,11 +8,11 @@ import TravelWishlist from "./Components/TravelWishlist";
 const App = () => {
   const [selectedParkId, setSelectedParkId] = useState(null);
   const [wishlist, setWishlist] = useState([]);
-  const [matchingResults, setMatchingResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
 
   const handleSearch = (results) => {
-    setMatchingResults(results);
-    setSelectedParkId(null);
+    setSearchResults(results);
   };
 
   const handleParkClick = (parkId) => {
@@ -20,21 +21,13 @@ const App = () => {
 
   return (
     <div>
-      <Header
-        onSearch={handleSearch} // Pass the handleSearch function
-        wishlist={wishlist}
-        addToWishlist={(park) => setWishlist([...wishlist, park])}
-        removeFromWishlist={(park) =>
-          setWishlist(wishlist.filter((item) => item.id !== park.id))
-        }
-      />
+      <Header onSearch={handleSearch} />
 
       <div className="main-container">
         <div className="content-container">
           <PreviewList
-            setSelectedParkId={handleParkClick}
-            selectedParkId={selectedParkId}
-            matchingResults={matchingResults} // Pass matchingResults as a prop
+            updateSelectedParkId={handleParkClick}
+            searchResults={searchResults}
           />
           {selectedParkId && (
             <div className="feature-container">

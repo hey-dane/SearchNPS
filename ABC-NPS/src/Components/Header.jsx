@@ -1,28 +1,14 @@
 import React from "react";
 import SearchComponent from "./SearchComponent";
-import TravelWishlist from "./TravelWishlist";
 
-const Header = ({
-  onSearch,
-  wishlist = [],
-  addToWishlist,
-  removeFromWishlist,
-}) => {
-  const handleAddToWishlist = (park) => {
-    addToWishlist(park);
-  };
-
-  const handleRemoveFromWishlist = (park) => {
-    removeFromWishlist(park);
+const Header = ({ onSearch }) => {
+  const handleSearch = (results) => {
+    onSearch(results);
   };
 
   return (
     <header>
-      <SearchComponent onSearch={onSearch} /> {/* Pass onSearch function */}
-      <TravelWishlist
-        wishlist={wishlist}
-        removeFromWishlist={handleRemoveFromWishlist}
-      />
+      <SearchComponent onSearch={handleSearch} />
     </header>
   );
 };
