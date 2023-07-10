@@ -1,0 +1,49 @@
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 384px;
+}
+
+.image-container {
+  position: absolute;
+}
+
+.form-container {
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+input {
+  width: 100%;
+  padding: 12px 60px;
+  margin: 8px 0;
+  border: 2px solid #ccc;
+  color: #ffa527;
+  font-weight: bold;
+  font-size: 24px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  opacity: 0.85;
+}
+
+input::placeholder {
+  color: #ffa527;
+}
+
+.image-title {
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.header-image {
+  position: relative;
+  width: auto;
+  object-fit: cover;
+}

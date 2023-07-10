@@ -1,9 +1,27 @@
 .feature-container {
   display: flex;
-  border-style: solid;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffdab9;
+  width: 60%;
+  color: #964b00;
+  margin-left: 20px;
+  border: 4px solid #964b00;
+  border-radius: 20px;
 }
 
 .feature-park {
+  margin: 0px 20px;
+}
+
+.feature-images {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+}
+
+.feature-images,
+img {
+  max-width: 400px;
 }

@@ -1,36 +1,18 @@
-.preview-container {
-  border: 8px solid #331b9a;
-  width: 100%;
-  text-align: left;
-  color: #9e0059;
-}
-
-.preview-hd {
-  border: 4px solid #5b51e8;
-  background-color: #aeaae3;
-  font-weight: bold;
-  padding: 8px;
-}
-
 .list-hd {
-  background-color: #aeaae3;
+  background-color: #ffdab9;
   font-weight: bold;
   padding: 8px;
-  border: 4px solid #5b51e8;
-}
-
-.park-list {
-  background-color: #fafafa;
+  border: 4px solid #964b00;
 }
 
 .park-list .park-item {
-  border: 2px solid #5b51e8;
-
+  border: 2px solid #964b00;
   font-size: 18px;
-  color: #9e0059;
+  color: brown;
   padding: 8px;
+  margin: 10px;
 }
 
 .park-list .park-item:nth-child(even) {
-  background: #cac8e7;
+  background: #ffdab9;
 }
