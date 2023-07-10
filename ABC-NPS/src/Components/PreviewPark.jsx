@@ -14,8 +14,8 @@ export const PreviewPark = ({ park, handleClick, onAddToWishlist }) => {
       <div className="preview-park" onClick={onClick}>
         <p>{park.fullName}</p>
         <p>{park.states}</p>
+        <button onClick={addToWishlist}>Add to Wishlist</button>
       </div>
-      <button onClick={addToWishlist}>Add to Wishlist</button>
     </div>
   );
 };

@@ -41,7 +41,6 @@ export const PreviewList = ({ updateSelectedParkId, searchResults }) => {
   return (
     <div className="preview-container">
       <h2 className="preview-hd">National Parks & Recreation</h2>
-      <div className="list-hd">Name and Location</div>
       <div className="park-list">
         {filteredParks.length > 0 ? (
           filteredParks.map((park) => (

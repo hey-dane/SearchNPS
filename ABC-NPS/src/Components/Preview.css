@@ -1,28 +1,18 @@
-.preview-hd {
-  border: 4px solid #964b00; /* Brown */
-  background-color: #ffdab9; /* PeachPuff */
-  font-weight: bold;
-  padding: 8px;
-}
-
 .list-hd {
-  background-color: #ffdab9; /* PeachPuff */
+  background-color: #ffdab9;
   font-weight: bold;
   padding: 8px;
-  border: 4px solid #964b00; /* Brown */
-}
-
-.park-list {
-  background-color: #fafafa;
+  border: 4px solid #964b00;
 }
 
 .park-list .park-item {
-  border: 2px solid #964b00; /* Brown */
+  border: 2px solid #964b00;
   font-size: 18px;
-  color: brown; /* Gold */
+  color: brown;
   padding: 8px;
+  margin: 10px;
 }
 
 .park-list .park-item:nth-child(even) {
-  background: #ffdab9; /* PeachPuff */
+  background: #ffdab9;
 }

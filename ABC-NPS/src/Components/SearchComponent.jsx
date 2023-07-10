@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./Header.css";
 import { apiKey, limit, apiURL } from "./apiConfig";
 
 const SearchComponent = ({ onSearch }) => {
@@ -165,19 +165,19 @@ const SearchComponent = ({ onSearch }) => {
   };
 
   return (
-    <div>
-      <form>
+    <>
+      <form className="form-container">
         <input
           type="text"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
-          placeholder="Search for parks..."
+          placeholder="Find your recreation!"
         />
         <button type="submit" onClick={handleSearch}>
           Search
         </button>
       </form>
-    </div>
+    </>
   );
 };
 

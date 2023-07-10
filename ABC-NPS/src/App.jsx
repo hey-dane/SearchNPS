@@ -20,7 +20,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app">
       <Header onSearch={handleSearch} />
 
       <div className="main-container">
@@ -30,16 +30,14 @@ const App = () => {
             searchResults={searchResults}
           />
           {selectedParkId && (
-            <div className="feature-container">
-              <FeaturePark
-                selectedParkId={selectedParkId}
-                wishlist={wishlist}
-                addToWishlist={(park) => setWishlist([...wishlist, park])}
-                removeFromWishlist={(park) =>
-                  setWishlist(wishlist.filter((item) => item.id !== park.id))
-                }
-              />
-            </div>
+            <FeaturePark
+              selectedParkId={selectedParkId}
+              wishlist={wishlist}
+              addToWishlist={(park) => setWishlist([...wishlist, park])}
+              removeFromWishlist={(park) =>
+                setWishlist(wishlist.filter((item) => item.id !== park.id))
+              }
+            />
           )}
         </div>
       </div>
