@@ -1,13 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,900;1,400;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barrio&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+
 body {
   margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 .app {
   position: relative;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0; */
+  background-color: #f8fadb;
 }
 
 .main-container {
@@ -18,10 +22,10 @@ body {
 }
 
 .preview-container {
-  border: 4px solid #964b00;
+  border: 4px solid #5a3b30;
   width: 40%;
   text-align: left;
-  color: brown;
+  color: #433b3f;
   float: left;
   box-sizing: border-box;
   border-radius: 20px;
@@ -30,30 +34,25 @@ body {
 .content-container {
   display: flex;
   align-items: flex-start;
+  width: 100%;
 }
 
 .park-list {
-  background-color: #fafafa;
+  background-color: transparent;
   margin: 20px;
 }
 
-.preview-park-component {
-  border: 3px solid #964b00;
-  border-radius: 20px;
-  margin-top: 10px;
-}
-
 .preview-hd {
-  border: 3px solid #964b00;
+  border: 3px solid #5a3b30;
   border-radius: 20px;
-  background-color: #ffdab9;
+  background-color: #c9b790;
   font-weight: bold;
   padding: 6px;
   margin: 10px;
 }
 
-.park-list .preview-park-component:nth-child(even) {
-  background: #ffdab9;
+.preview-park:nth-child(even) {
+  background: #c9b790;
 }
 
 .list-hd {
@@ -62,5 +61,15 @@ body {
 
 .preview-park {
   margin: 10px;
-  line-height: 6px;
+  overflow-wrap: break-word;
+}
+
+h2 {
+  font-family: "League Spartan", sans-serif;
+  font-variant: small-caps;
+}
+
+h3 {
+  font-family: "League Spartan", sans-serif;
+  text-transform: uppercase;
 }

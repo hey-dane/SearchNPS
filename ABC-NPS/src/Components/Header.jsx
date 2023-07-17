@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
 import SearchComponent from "./SearchComponent";
-import { apiKey } from "./apiConfig";
-import "./header.css";
 
-const Header = ({ onSearch, park }) => {
-  const handleSearch = (results) => {
-    onSearch(results);
-  };
-
+const Header = ({ onSearch }) => {
   return (
     <header className="header-container">
-      <SearchComponent onSearch={handleSearch} />
+      <div className="searchbar">
+        <SearchComponent onSearch={onSearch} />
+      </div>
     </header>
   );
 };

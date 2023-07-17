@@ -3,6 +3,8 @@
   justify-content: center;
   align-items: center;
   height: 384px;
+  background: url(/src/assets/mountain-bg.png);
+  background-size: cover;
 }
 
 .image-container {
@@ -17,7 +19,7 @@
 
 input {
   width: 100%;
-  padding: 12px 60px;
+  padding: 14px 60px;
   margin: 8px 0;
   border: 2px solid #ccc;
   color: #ffa527;
@@ -26,6 +28,7 @@ input {
   background-color: #ffffff;
   border-radius: 6px;
   opacity: 0.85;
+  font-family: "League Spartan", sans-serif;
 }
 
 input::placeholder {

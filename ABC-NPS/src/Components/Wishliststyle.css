@@ -1,0 +1,19 @@
+.wishlist-button-container {
+  position: absolute;
+}
+
+.wishlist-button {
+  /* Your button styles here */
+}
+
+.wishlist-container {
+  top: 0;
+  right: -300px; /* Adjust the value to position the div off the screen */
+  width: 300px;
+  height: 100%;
+  padding: 10px;
+}
+
+.remove-icon {
+  padding-left: 5px;
+}

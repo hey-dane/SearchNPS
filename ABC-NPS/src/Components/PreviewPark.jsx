@@ -1,21 +1,19 @@
 import React from "react";
 
-export const PreviewPark = ({ park, handleClick, onAddToWishlist }) => {
-  const onClick = () => {
-    handleClick(park);
-  };
-
-  const addToWishlist = () => {
-    onAddToWishlist(park);
-  };
-
+const PreviewPark = ({ park, handleClick, hidePark, addToWishlist }) => {
   return (
-    <div className="preview-park-component">
-      <div className="preview-park" onClick={onClick}>
-        <p>{park.fullName}</p>
-        <p>{park.states}</p>
-        <button onClick={addToWishlist}>Add to Wishlist</button>
-      </div>
+    <div className="preview-park">
+      <p onClick={() => handleClick(park)}>{park.fullName}</p>
+      <p>{park.states.replace(/,/g, ", ")}</p>
+      <button onClick={() => hidePark(park.id)}>Not Interested</button>
+      <button
+        onClick={(event) => {
+          event.stopPropagation();
+          addToWishlist(park.fullName);
+        }}
+      >
+        Add to Wishlist
+      </button>
     </div>
   );
 };

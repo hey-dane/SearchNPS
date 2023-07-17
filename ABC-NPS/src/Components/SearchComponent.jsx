@@ -171,7 +171,7 @@ const SearchComponent = ({ onSearch }) => {
           type="text"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
-          placeholder="Find your recreation!"
+          placeholder="Find your parks & recreation!"
         />
         <button type="submit" onClick={handleSearch}>
           Search
