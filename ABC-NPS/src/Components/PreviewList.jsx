@@ -13,7 +13,7 @@ export const PreviewList = ({
   const [hiddenParks, setHiddenParks] = useState([]);
 
   useEffect(() => {
-    // Fetch parks data and shuffle once when the component mounts
+    // Fetch parks data
     async function fetchParks() {
       try {
         const response = await fetch(
@@ -21,22 +21,14 @@ export const PreviewList = ({
         );
         const result = await response.json();
         const parkData = result.data;
-        setParks(parkData);
+        const shuffledParks = parkData.sort(() => Math.random() - 0.5);
+        setParks(shuffledParks);
       } catch (error) {
         console.error(error);
       }
     }
-
-    if (parks.length === 0) {
-      fetchParks();
-    }
+    fetchParks();
   }, []);
-
-  useEffect(() => {
-    // Shuffle parks array when it changes
-    const shuffledParks = [...parks].sort(() => Math.random() - 0.5);
-    setFilteredParks(shuffledParks);
-  }, [parks]);
 
   useEffect(() => {
     // Filter parks based on search results

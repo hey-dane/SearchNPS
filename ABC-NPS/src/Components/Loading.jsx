@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./Loading.css";
 import lottie from "lottie-web";
-// import paperAirplane from "/src/assets/Paper-Airplane.json";
 import loopyPlane from "/src/assets/loopyplane.json";
 
 function Loading() {
@@ -9,13 +8,23 @@ function Loading() {
 
   useEffect(() => {
     const container = containerRef.current;
+    let animation = null;
+
     if (container && container.querySelector("svg") === null) {
-      lottie.loadAnimation({
+      animation = lottie.loadAnimation({
         container,
-        // animationData: paperAirplane,
         animationData: loopyPlane,
       });
+
+      animation.setSpeed(2); // Set the animation speed to 2x. Adjust as needed.
     }
+
+    // Cleanup on unmount
+    return () => {
+      if (animation) {
+        animation.destroy();
+      }
+    };
   }, []);
 
   return <div ref={containerRef} id="loading-logo"></div>;

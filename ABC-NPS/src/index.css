@@ -29,17 +29,20 @@ body {
   float: left;
   box-sizing: border-box;
   border-radius: 20px;
-}
-
-.content-container {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
+  height: 1000px; /* Set the desired height for the preview container */
+  position: relative;
 }
 
 .park-list {
-  background-color: transparent;
-  margin: 20px;
+  height: 90%;
+  overflow-y: auto;
+  display: inline-block;
+}
+.preview-park-container {
+  height: calc(
+    100% - 30px
+  ); /* Adjust the height to account for the height of preview-hd */
+  overflow-y: auto; /* Add scroll only to the preview-park section */
 }
 
 .preview-hd {
@@ -49,6 +52,8 @@ body {
   font-weight: bold;
   padding: 6px;
   margin: 10px;
+  top: 0;
+  z-index: 1;
 }
 
 .preview-park:nth-child(even) {
@@ -61,7 +66,11 @@ body {
 
 .preview-park {
   margin: 10px;
+  padding: 10px;
   overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h2 {
@@ -72,4 +81,27 @@ h2 {
 h3 {
   font-family: "League Spartan", sans-serif;
   text-transform: uppercase;
+}
+
+.content-container {
+  display: flex;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px; /* Adjust the width as per your requirements */
+  height: 24px; /* Adjust the height as per your requirements */
+}
+
+.icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.enlarge {
+  transform: scale(1.5); /* Increase the scale as per your requirements */
 }

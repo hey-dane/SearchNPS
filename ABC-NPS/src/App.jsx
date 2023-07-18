@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PreviewList from "./Components/PreviewList";
 import FeaturePark from "./Components/FeaturePark";
-import SearchComponent from "./Components/SearchComponent";
+import Header from "./Components/Header";
 import Wishlist from "./Components/Wishlist";
 import Loading from "./Components/Loading";
 
@@ -17,7 +17,7 @@ const App = () => {
     setTimeout(() => {
       setSearchResults(results);
       setLoading(false);
-    }, 4500); // Simulated loading delay of 4.5 seconds
+    }, 2000); // Simulated loading delay of 4.5 seconds
   };
 
   const addToWishlist = (parkName) => {
@@ -52,11 +52,7 @@ const App = () => {
         </div>
       )}
 
-      <header className="header-container">
-        <div className="searchbar">
-          <SearchComponent onSearch={handleSearch} />
-        </div>
-      </header>
+      <Header onSearch={handleSearch} />
 
       <div className="main-container">
         <div className="content-container">
@@ -64,6 +60,7 @@ const App = () => {
             updateSelectedParkId={setSelectedParkId}
             searchResults={loading ? [] : searchResults} // Display empty results while loading
             addToWishlist={addToWishlist}
+            loading={loading} // Pass the loading state to PreviewList
           />
           {selectedParkId && <FeaturePark selectedParkId={selectedParkId} />}
         </div>
