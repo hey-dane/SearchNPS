@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { PreviewPark } from "./PreviewPark";
+import PreviewPark from "./PreviewPark";
 import FeaturePark from "./FeaturePark";
 import { apiURL, apiKey, limit } from "./apiConfig";
 
-export const PreviewList = ({ updateSelectedParkId, searchResults }) => {
+export const PreviewList = ({
+  updateSelectedParkId,
+  searchResults,
+  addToWishlist,
+}) => {
   const [parks, setParks] = useState([]);
   const [filteredParks, setFilteredParks] = useState([]);
+  const [hiddenParks, setHiddenParks] = useState([]);
 
   useEffect(() => {
     // Fetch parks data
@@ -38,18 +43,27 @@ export const PreviewList = ({ updateSelectedParkId, searchResults }) => {
     updateSelectedParkId(park.id);
   };
 
+  const hidePark = (parkId) => {
+    setHiddenParks([...hiddenParks, parkId]);
+  };
+
   return (
     <div className="preview-container">
       <h2 className="preview-hd">National Parks & Recreation</h2>
       <div className="park-list">
         {filteredParks.length > 0 ? (
-          filteredParks.map((park) => (
-            <PreviewPark
-              key={park.id}
-              park={park}
-              handleClick={handleParkClick}
-            />
-          ))
+          filteredParks.map(
+            (park) =>
+              !hiddenParks.includes(park.id) && (
+                <PreviewPark
+                  key={park.id}
+                  park={park}
+                  handleClick={handleParkClick}
+                  hidePark={hidePark}
+                  addToWishlist={addToWishlist}
+                />
+              )
+          )
         ) : (
           <div>No parks found.</div>
         )}

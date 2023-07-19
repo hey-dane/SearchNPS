@@ -3,11 +3,11 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #ffdab9;
+  background-color: #f8fadb;
   width: 60%;
-  color: #964b00;
+  color: #ba6000;
   margin-left: 20px;
-  border: 4px solid #964b00;
+  border: 4px solid #ba6000;
   border-radius: 20px;
 }
 
@@ -23,5 +23,5 @@
 
 .feature-images,
 img {
-  max-width: 400px;
+  max-width: 90%;
 }

@@ -121,9 +121,7 @@ const SearchComponent = ({ onSearch }) => {
     // Check if the search query matches stateCode
     if (searchQuery.length === 2) {
       const stateCodeQuery = searchQuery.toUpperCase();
-      fetch(
-        `https://developer.nps.gov/api/v1/parks?stateCode=${stateCodeQuery}&api_key=${apiKey}`
-      )
+      fetch(`${apiURL}?stateCode=${stateCodeQuery}&api_key=${apiKey}`)
         .then((response) => response.json())
         .then((data) => {
           setSearchResults(data.data);
@@ -133,9 +131,7 @@ const SearchComponent = ({ onSearch }) => {
     } else {
       const stateCode = convertStateToCode(searchQuery);
       if (stateCode) {
-        fetch(
-          `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&api_key=${apiKey}`
-        )
+        fetch(`${apiURL}?stateCode=${stateCode}&api_key=${apiKey}`)
           .then((response) => response.json())
           .then((data) => {
             setSearchResults(data.data);
@@ -143,9 +139,7 @@ const SearchComponent = ({ onSearch }) => {
           })
           .catch((error) => console.log(error));
       } else {
-        fetch(
-          `https://developer.nps.gov/api/v1/parks?limit=500&api_key=${apiKey}`
-        )
+        fetch(`${apiURL}?limit=${limit}&api_key=${apiKey}`)
           .then((response) => response.json())
           .then((data) => {
             const filteredParks = data.data.filter((park) =>
@@ -171,7 +165,7 @@ const SearchComponent = ({ onSearch }) => {
           type="text"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
-          placeholder="Find your recreation!"
+          placeholder="Find your parks & recreation!"
         />
         <button type="submit" onClick={handleSearch}>
           Search
