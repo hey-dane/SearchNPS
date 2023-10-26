@@ -23,7 +23,8 @@ body {
 
 .preview-container {
   border: 4px solid #5a3b30;
-  width: 40%;
+  max-width: 400px;
+  width: 100%;
   text-align: left;
   color: #433b3f;
   float: left;

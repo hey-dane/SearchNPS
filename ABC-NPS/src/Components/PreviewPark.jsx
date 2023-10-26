@@ -12,7 +12,7 @@ const PreviewPark = ({ park, handleClick, hidePark, addToWishlist }) => {
     setIsMapIconClicked(true);
     setTimeout(() => {
       setIsMapIconClicked(false);
-    }, 200); // Duration of the animation in milliseconds
+    }, 200);
   };
 
   return (
@@ -28,7 +28,7 @@ const PreviewPark = ({ park, handleClick, hidePark, addToWishlist }) => {
           size={isMapIconClicked ? 1.5 : 1}
           onClick={handleMapIconClick}
           className={`icon-button ${isMapIconClicked ? "enlarge" : ""}`}
-          style={{ transition: "transform 0.2s" }} // Add transition CSS property
+          style={{ transition: "transform 0.2s" }}
         />
       </div>
     </div>

@@ -5,6 +5,7 @@ import "./FeaturePark.css";
 
 export default function FeaturePark({ selectedParkId }) {
   const [park, setPark] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const fetchPark = async () => {
     try {
@@ -45,20 +46,33 @@ export default function FeaturePark({ selectedParkId }) {
   };
 
   return (
-    <div className="feature-container">
-      {park ? (
-        <>
-          <div className="feature-park">
-            <h2>{park.fullName}</h2>
-            <h3>{park.designation}</h3>
-            <p>{locationText}</p>
-            <p>{park.description}</p>
+    isModalOpen && (
+      <div className="modal">
+        <div className="modal-content">
+          <div
+            className="close-button"
+            onClick={() => {
+              setIsModalOpen(false);
+              setSelectedParkId(null);
+            }}
+          >
+            X
           </div>
-          <div className="feature-images">{renderImages()}</div>
-        </>
-      ) : (
-        <p>No park found.</p>
-      )}
-    </div>
+          {park ? (
+            <>
+              <div className="feature-park">
+                <h2>{park.fullName}</h2>
+                <h3>{park.designation}</h3>
+                <p>{locationText}</p>
+                <p>{park.description}</p>
+              </div>
+              <div className="feature-images">{renderImages()}</div>
+            </>
+          ) : (
+            <p>No park found.</p>
+          )}
+        </div>
+      </div>
+    )
   );
 }

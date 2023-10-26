@@ -10,14 +10,15 @@ const App = () => {
   const [searchResults, setSearchResults] = useState(null);
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSearch = (results) => {
-    setLoading(true); // Set loading to true when search is initiated
+    setLoading(true);
 
     setTimeout(() => {
       setSearchResults(results);
       setLoading(false);
-    }, 2000); // Simulated loading delay of 4.5 seconds
+    }, 2000);
   };
 
   const addToWishlist = (parkName) => {
@@ -35,12 +36,14 @@ const App = () => {
     );
   };
 
+  const handleParkClick = (parkId) => {
+    setSelectedParkId(null);
+    setIsModalOpen(true);
+    setTimeout(() => setSelectedParkId(parkId), 0);
+  };
+
   useEffect(() => {
     if (!loading) {
-      // Perform actions after loading is complete
-      // Example: Update the PreviewList with search results
-      // You can modify this part according to your requirements
-      // For now, it simply logs the search results
     }
   }, [loading]);
 
@@ -57,12 +60,19 @@ const App = () => {
       <div className="main-container">
         <div className="content-container">
           <PreviewList
-            updateSelectedParkId={setSelectedParkId}
-            searchResults={loading ? [] : searchResults} // Display empty results while loading
+            updateSelectedParkId={handleParkClick}
+            searchResults={loading ? [] : searchResults}
             addToWishlist={addToWishlist}
-            loading={loading} // Pass the loading state to PreviewList
+            loading={loading}
           />
-          {selectedParkId && <FeaturePark selectedParkId={selectedParkId} />}
+          {selectedParkId && (
+            <FeaturePark
+              selectedParkId={selectedParkId}
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              setSelectedParkId={setSelectedParkId}
+            />
+          )}
         </div>
         <Wishlist wishlist={wishlist} removeFromWishlist={removeFromWishlist} />
       </div>
