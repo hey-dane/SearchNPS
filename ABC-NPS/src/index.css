@@ -6,6 +6,8 @@
 
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -17,7 +19,7 @@ body {
 .main-container {
   display: flex;
   flex-direction: row;
-  margin: 20px;
+  margin-left: 20px;
   margin-top: 40px;
 }
 
@@ -40,10 +42,8 @@ body {
   display: inline-block;
 }
 .preview-park-container {
-  height: calc(
-    100% - 30px
-  ); /* Adjust the height to account for the height of preview-hd */
-  overflow-y: auto; /* Add scroll only to the preview-park section */
+  height: calc(100% - 30px);
+  overflow-y: auto;
 }
 
 .preview-hd {
@@ -93,8 +93,8 @@ h3 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 200px; /* Adjust the width as per your requirements */
-  height: 24px; /* Adjust the height as per your requirements */
+  width: 200px;
+  height: 24px;
 }
 
 .icon-button {
@@ -104,5 +104,23 @@ h3 {
 }
 
 .enlarge {
-  transform: scale(1.5); /* Increase the scale as per your requirements */
+  transform: scale(1.5);
+}
+
+@media only screen and (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    margin: 10px 20px;
+    padding: 0;
+  }
+
+  .preview-container {
+    max-width: 100%;
+    height: 450px;
+    float: none;
+  }
+
+  .park-list {
+    height: 345px;
+  }
 }

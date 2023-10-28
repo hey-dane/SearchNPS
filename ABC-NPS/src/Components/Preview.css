@@ -16,3 +16,15 @@
 .park-list .park-item:nth-child(even) {
   background: #f8fadb;
 }
+
+@media only screen and (max-width: 768px) {
+  .list-hd {
+    padding: 5px;
+  }
+
+  .park-list .park-item {
+    font-size: 16px;
+    padding: 5px;
+    margin: 5px;
+  }
+}

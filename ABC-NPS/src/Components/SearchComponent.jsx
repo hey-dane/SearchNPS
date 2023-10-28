@@ -154,7 +154,7 @@ const SearchComponent = ({ onSearch }) => {
   };
 
   const handleSearch = (event) => {
-    event.preventDefault(); // Prevent form submission and page reload
+    event.preventDefault();
     performSearch();
   };
 
@@ -165,7 +165,7 @@ const SearchComponent = ({ onSearch }) => {
           type="text"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
-          placeholder="Find your parks & recreation!"
+          placeholder="Search Parks!"
         />
         <button type="submit" onClick={handleSearch}>
           Search

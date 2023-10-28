@@ -16,10 +16,9 @@ function Loading() {
         animationData: loopyPlane,
       });
 
-      animation.setSpeed(2); // Set the animation speed to 2x. Adjust as needed.
+      animation.setSpeed(2);
     }
 
-    // Cleanup on unmount
     return () => {
       if (animation) {
         animation.destroy();

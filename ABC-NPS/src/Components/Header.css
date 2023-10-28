@@ -11,6 +11,10 @@
   position: absolute;
 }
 
+.searchbar {
+  width: 600px;
+}
+
 .form-container {
   font-size: 16px;
   font-weight: bold;
@@ -18,7 +22,7 @@
 }
 
 input {
-  width: 100%;
+  width: 600px;
   padding: 14px 60px;
   margin: 8px 0;
   border: 2px solid #ccc;
@@ -35,18 +39,28 @@ input::placeholder {
   color: #ffa527;
 }
 
-.image-title {
-  position: absolute;
-  top: 10px;
-  left: 100px;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
 .header-image {
   position: relative;
   width: auto;
   object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .searchbar,
+  .form-container {
+    max-width: 250px;
+    box-sizing: border-box;
+    margin-right: 40px;
+  }
+
+  .form-container {
+    font-size: 13px;
+  }
+
+  input {
+    max-width: 250px;
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 14px;
+  }
 }
